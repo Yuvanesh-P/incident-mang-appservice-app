@@ -57,9 +57,12 @@ jobs:
       # Run tests
       # ----------------------------------------------
 
-      - name: Run tests
-        run: |
-          pytest -v
+    - name: Run tests
+      env:
+        DATABASE_URL: sqlite:///./ci_test.db
+        SECRET_KEY: test-secret-key-for-ci-only
+      run: |
+        pytest -v
 
 
       # ----------------------------------------------
